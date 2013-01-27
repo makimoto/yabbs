@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "articles/index" do
   before(:each) do
+    assign(:article, Article.new)
     assign(:articles, [
       stub_model(Article,
         :title => "Title",
