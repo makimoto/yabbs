@@ -1,15 +1,14 @@
-<h1>Listing articles</h1>
-
 <% @articles.each do |article| %>
   <div class='article'>
     <h2><%= article.title %></h2>
-    <div class='article_body'>
-      <%= article.body %>
-    </div>
     <div class='article_meta'>
       Posted by <%= article.name %> on <%= article.created_at.localtime %>
+    </div>
+    <div class='article_body'>
+      <%= article.body %>
     </div>
   </div>
 <% end %>
 
-<%= link_to 'New Article', new_article_path %>
+<h2>新しい投稿</h2>
+<%= render 'form', :article => @article %>
