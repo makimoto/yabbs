@@ -81,7 +81,7 @@ describe ArticlesController do
 
       it "redirects to the created article" do
         post :create, {:article => valid_attributes}, valid_session
-        response.should redirect_to(Article.last)
+        response.should redirect_to(articles_path)
       end
     end
 
