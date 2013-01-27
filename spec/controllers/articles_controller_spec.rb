@@ -42,14 +42,6 @@ describe ArticlesController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested article as @article" do
-      article = Article.create! valid_attributes
-      get :show, {:id => article.to_param}, valid_session
-      assigns(:article).should eq(article)
-    end
-  end
-
   describe "GET new" do
     it "assigns a new article as @article" do
       get :new, {}, valid_session

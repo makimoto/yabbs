@@ -1,5 +1,5 @@
 Yabbs::Application.routes.draw do
-  resources :articles
+  resources :articles, :except => [:show]
   root :to => 'articles#index'
 
 
