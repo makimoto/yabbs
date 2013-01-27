@@ -2,7 +2,7 @@
 <% @articles.each do |article| %>
   <div class='article'>
     <h2><%= article.title %></h2>
-    <div class='article_meta'>
+    <div class='article_meta pull-right'>
       Posted by <%= article.name %> on <%= article.created_at.localtime %>
       |
       <%= link_to edit_article_path(article) do %>
@@ -17,6 +17,7 @@
       <%= article.body %>
     </div>
   </div>
+  <hr />
 <% end %>
 
 <h2>新しい投稿</h2>
