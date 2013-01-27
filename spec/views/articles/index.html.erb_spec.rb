@@ -6,12 +6,14 @@ describe "articles/index" do
       stub_model(Article,
         :title => "Title",
         :name => "Name",
-        :body => "MyText"
+        :body => "MyText",
+        :created_at => Time.now,
       ),
       stub_model(Article,
         :title => "Title",
         :name => "Name",
-        :body => "MyText"
+        :body => "MyText",
+        :created_at => Time.now,
       )
     ])
   end
@@ -19,8 +21,8 @@ describe "articles/index" do
   it "renders a list of articles" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "Title".to_s, :count => 2
-    assert_select "tr>td", :text => "Name".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
+    assert_select ".article>h2", :text => "Title".to_s, :count => 2
+    assert_select ".article>.article_meta", :text => /Name/, :count => 2
+    assert_select ".article>.article_body", :text => "MyText", :count => 2
   end
 end
