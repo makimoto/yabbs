@@ -11,17 +11,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # GET /articles/new
-  # GET /articles/new.json
-  def new
-    @article = Article.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @article }
-    end
-  end
-
   # GET /articles/1/edit
   def edit
     @article = Article.find(params[:id])
@@ -37,7 +26,7 @@ class ArticlesController < ApplicationController
         format.html { redirect_to articles_path, notice: 'Article was successfully created.' }
         format.json { render json: @article, status: :created, location: @article }
       else
-        format.html { render action: "new" }
+        format.html { render action: "index" }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end

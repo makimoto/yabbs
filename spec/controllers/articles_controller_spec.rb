@@ -42,13 +42,6 @@ describe ArticlesController do
     end
   end
 
-  describe "GET new" do
-    it "assigns a new article as @article" do
-      get :new, {}, valid_session
-      assigns(:article).should be_a_new(Article)
-    end
-  end
-
   describe "GET edit" do
     it "assigns the requested article as @article" do
       article = Article.create! valid_attributes
@@ -89,7 +82,7 @@ describe ArticlesController do
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
         post :create, {:article => { "title" => "invalid value" }}, valid_session
-        response.should render_template("new")
+        response.should render_template("index")
       end
     end
   end

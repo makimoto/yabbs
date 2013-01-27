@@ -7,10 +7,6 @@ describe ArticlesController do
       get("/articles").should route_to("articles#index")
     end
 
-    it "routes to #new" do
-      get("/articles/new").should route_to("articles#new")
-    end
-
     it "routes to #edit" do
       get("/articles/1/edit").should route_to("articles#edit", :id => "1")
     end
