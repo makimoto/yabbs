@@ -123,7 +123,7 @@ describe ArticlesController do
       it "redirects to the article" do
         article = Article.create! valid_attributes
         put :update, {:id => article.to_param, :article => valid_attributes}, valid_session
-        response.should redirect_to(article)
+        response.should redirect_to(articles_path)
       end
     end
 

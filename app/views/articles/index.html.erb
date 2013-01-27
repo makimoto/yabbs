@@ -4,6 +4,14 @@
     <h2><%= article.title %></h2>
     <div class='article_meta'>
       Posted by <%= article.name %> on <%= article.created_at.localtime %>
+      |
+      <%= link_to edit_article_path(article) do %>
+        <span class='icon-edit'>edit</span>
+      <% end %>
+      |
+      <%= link_to article_path(article), :method => 'DELETE', :confirm => '削除しますか?' do %>
+        <span class='icon-remove'>delete</span>
+      <% end %>
     </div>
     <div class='article_body'>
       <%= article.body %>
