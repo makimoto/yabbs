@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_filter :require_article, :only => [:edit, :update, :destroy]
+
   def index
     @articles = Article.all
     @article = Article.new
@@ -9,7 +11,6 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
   end
 
   def create
@@ -25,8 +26,6 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:id])
-
     respond_to do |format|
       if @article.update_attributes(params[:article])
         format.html { redirect_to articles_path, notice: 'Article was successfully updated.' }
@@ -37,11 +36,15 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
 
     respond_to do |format|
       format.html { redirect_to articles_url }
     end
+  end
+
+  private
+  def require_article
+    @article = Article.find(params[:id])
   end
 end
